@@ -2,6 +2,7 @@
 
 #define MAX_SOURCE_SIZE (0x100000)
 
+// An Auxiliary function to Set Up OpenCL Ambient: context, program, command queue, ...
 int InitializeOpenCL() {
  
   printf("Initialize Device...\n");
