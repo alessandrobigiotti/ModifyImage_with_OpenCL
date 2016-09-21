@@ -26,7 +26,8 @@ __kernel void binarizza(__global float* image_matrix, __global float* output, in
 }
 
 // Kernel to applicate some median fileter (gauss, smooth, ....)
-__kernel void mask_factor(__global float* image_matrix, __global float* output, int W, int H, __global float* mask, int range, int factor){
+__kernel void mask_factor(__global float* image_matrix, __global float* output, int W, int H, __global float* mask, 
+												int range, int factor){
 
 	int row = get_global_id(1);
 	int col = get_global_id(0);
@@ -60,7 +61,7 @@ __kernel void mask(__global float* image_matrix, __global float* output, int W, 
 	for (int i = row - (range); i < row + (range + 1); i++)	{
 		for (int j = col - (range * 3); j < col + (range + 1)*3 ; j+=3){
 			if (!(i < 0) && !(i > H) && !(j < 0) && !(j > W*3)){
-				value_pixels += image_matrix[j + i * W * 3] *
+				value_pixels += image_matrix[j + i * W * 3] * 
 							mask[(row - i + range) * 3 + (col -j)/3 + range];
 			}
 		}
@@ -95,7 +96,7 @@ __kernel void edge_detection(__global float* image_matrix, __global float* outpu
 			}
 		}
 	}
-  G = sqrt((gx*gx)+(gy*gy));
+  	G = sqrt((gx*gx)+(gy*gy));
 
 	output[row*W*3 + col] = G;
 }
