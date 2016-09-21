@@ -1,3 +1,4 @@
+/* Created by Alessandro Bigiotti */
 
 int CreateKernel(){
   /////////////////////////\\\\\\\\\\\\
@@ -26,7 +27,6 @@ int CreateKernel(){
   }
   ///////////////////////\\\\\\\\\\\\\\\\\\\
   KERNEL Mask_Fator CREATE
-
   kernel_mask_factor = clCreateKernel(program, "mask_factor", &err);
   if (!kernel_mask_factor || err != CL_SUCCESS)	{
     printf("Errore, Impossibile creare il kernel_mask_factor!\n");
@@ -50,7 +50,7 @@ int CreateKernel(){
     exit(1);
   }
   ///////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-  //KERNEL Mask2 CREATE
+  //KERNEL Mask3 CREATE
   kernel_mask3 = clCreateKernel(program, "mask", &err);
   if (!kernel_mask3 || err != CL_SUCCESS)	{
     printf("Errore, Impossibile creare il kernel_mask!\n");
