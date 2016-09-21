@@ -2,7 +2,7 @@
 
 int CreateKernel(){
   /////////////////////////\\\\\\\\\\\\
-  KERNEL NEGATIVO CREATE
+  KERNEL NEGATIVE CREATE
   kernel_negativo = clCreateKernel(program, "negativo", &err);
   if (!kernel_negativo || err != CL_SUCCESS)	{
     printf("Errore, Impossibile creare il kernel_negativo!\n");
