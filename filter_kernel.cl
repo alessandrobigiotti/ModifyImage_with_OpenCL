@@ -21,7 +21,7 @@ __kernel void binarizza(__global float* image_matrix, __global float* output, in
 	if (image_matrix[row*H + col + rgb*H*W] < 0.5f)
 		output[row * H + col + rgb*H*W] = 0.0f;
 	else
-	  output[row * H + col + rgb*H*W] = 1.0f;
+	  	output[row * H + col + rgb*H*W] = 1.0f;
 
 }
 
