@@ -23,3 +23,9 @@ The program is composed by some files:
 * initKernel.c: Contains a function to create the kernels
 * setKernel.c: Contains a function to set the Kernels parameters
 * setOpenCLAmbient.c: Contains a function to set the Platform, Device, Context... for OpenCL
+
+## Compile and Run the Program
+Open the Terminal, move to the folder where is the program and type:
+* $ _gcc -std=c99 -I /usr/include/CL -L /usr/lib/x86_64-linux-gnu/libOpenCL.so  -lIL -lILU -lILUT Program.c -o Main -lOpenCL_
+* $ _optirun ./Main_
+
