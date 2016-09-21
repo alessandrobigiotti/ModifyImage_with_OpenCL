@@ -1,7 +1,5 @@
 /* Created by Alessandro Bigiotti */
-////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-ONPECL CODE
-////////////////////////////////////////////
+
 #define MAX_SOURCE_SIZE (0x100000)
 
 int InitializeOpenCL() {
