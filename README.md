@@ -2,7 +2,13 @@
 ## Introduction
 This Program allow to modify an image (.bmp format) using punctual and local operations. 
 It take in input a path to an image.bmp. If the path exists the image will be loaded using [DevIL](http://openil.sourceforge.net/) library. The pixels of the image will be converted into float and 
-will be processed into GPU using OpenCL library.
+will be processed into GPU using OpenCL library. 
+
+## How it functions
+1. Take in input an image.bmp;
+2. Ask how many filters apply (single or combined)
+3. Select the filters for appropriate modifications
+4. Save the output in the folder _/Image_
 
 ## Requests
 To Compile and Run the program you need to install and configure all necessary library:
