@@ -1,6 +1,6 @@
 /* Created by Alessandro Bigiotti */
 
-int SetKernel(int W, int H){
+int SetKernelSingle(int W, int H){
 
   // Set Kernel Negative
   err = clSetKernelArg(kernel_negativo, 0, sizeof(cl_mem), (void *)&dev_image);

@@ -31,6 +31,9 @@ char *source_str;
 // Path to the .cl file
 char path_to_kernel[1082];
 
+// Choose the type of kernel (single or combined)
+int type_kernel;
+
 // Selected filter_kernel
 int filter_selected;
 
