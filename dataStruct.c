@@ -17,15 +17,17 @@ char currentDirectory[1082];
 
 // Mantaine the pixels of the image
 ILubyte* data_raw;
+
 // The dimensions of image in pixels
 unsigned int S;
 
 // Pointer to file
 FILE *fp;
-size_t source_size;
 
 // A buffer to save the .cl source code
+size_t source_size;
 char *source_str;
+
 // Path to the .cl file
 char path_to_kernel[1082];
 
@@ -85,17 +87,21 @@ float factor = 1;
 
 // A variable to show some possible error
 cl_int err;
-// The number of platform and its id
+
+// The number of Configured platform and its id
 cl_uint Num_Platform = 0;
 cl_platform_id Platform_id[10];
+
 // The number of Available Devices and its id
 cl_uint Num_Device = 0;
 cl_device_id Devices_id[10];
 
 // OpenCL Context
 cl_context context;
+
 // OpenCL Command Queue
 cl_command_queue commands;
+
 // OpenCL Program
 cl_program program;
 
