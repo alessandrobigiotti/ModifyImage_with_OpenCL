@@ -21,7 +21,8 @@ The program is composed by some files:
 * dataStruct.c: Contains all necessary dataStructures
 * filter_kernel.cl: Contains the .cl code functions
 * initKernel.c: Contains a function to create the kernels
-* setKernel.c: Contains a function to set the Kernels parameters
+* setKernelSngle.c: Contains a function to set the Kernels parameters for independent execution
+* setKernelCombined.c: Contains a function to set the kernels parameters for conditionated execution
 * setOpenCLAmbient.c: Contains a function to set the Platform, Device, Context... for OpenCL
 Other files:
 * Info.c: A Program to show some informations about GPU Devices
