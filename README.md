@@ -23,6 +23,14 @@ The program is composed by some files:
 * initKernel.c: Contains a function to create the kernels
 * setKernel.c: Contains a function to set the Kernels parameters
 * setOpenCLAmbient.c: Contains a function to set the Platform, Device, Context... for OpenCL
+Other files:
+* Info.c: A Program to show some informations about GPU Devices
+* Image: A folder to save the output images
+
+## Compile and Run Info.c
+Open the Terminal, move to the folder where is the program and type:
+* $ _gcc -std=c99 -I /usr/include/CL -L /usr/lib/x86_64-linux-gnu/libOpenCL.so Info.c -o Info -lOpenCL_
+* $ _optirun ./Info_
 
 ## Compile and Run the Program
 Open the Terminal, move to the folder where is the program and type:
