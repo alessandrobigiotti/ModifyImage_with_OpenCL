@@ -12,7 +12,7 @@ To Compile and Run the program you need to install and configure all necessary l
 * Here there is CUDA-TOOLKIT: [link to download](https://developer.nvidia.com/cuda-downloads)
 * Note: If you have a propertie drivers, i reccomend to use bumblebee ([Debian](https://wiki.debian.org/it/Bumblebee) / [Ubuntu](https://wiki.ubuntu.com/Bumblebee)) instead of nouveau Nvidia driver.
 * The [DevIL](http://openil.sourceforge.net/) library to load the image: [donwload](http://openil.sourceforge.net/download.php)
-* The OpenCL library ([NVIDIA](https://developer.nvidia.com/opencl)/[AMD](http://developer.amd.com/tools-and-sdks/opencl-zone/)) library 
+* The OpenCL library ([NVIDIA](https://developer.nvidia.com/opencl) / [AMD](http://developer.amd.com/tools-and-sdks/opencl-zone/)) library 
 * To run the compiled program, i use optirun, it will install automatically with the bumblebee installation.
 
 ## The Program
@@ -23,6 +23,14 @@ The program is composed by some files:
 * initKernel.c: Contains a function to create the kernels
 * setKernel.c: Contains a function to set the Kernels parameters
 * setOpenCLAmbient.c: Contains a function to set the Platform, Device, Context... for OpenCL
+Other files:
+* Info.c: A Program to show some informations about GPU Devices
+* Image: A folder to save the output images
+
+## Compile and Run Info.c
+Open the Terminal, move to the folder where is the program and type:
+* $ _gcc -std=c99 -I /usr/include/CL -L /usr/lib/x86_64-linux-gnu/libOpenCL.so Info.c -o Info -lOpenCL_
+* $ _optirun ./Info_
 
 ## Compile and Run the Program
 Open the Terminal, move to the folder where is the program and type:
