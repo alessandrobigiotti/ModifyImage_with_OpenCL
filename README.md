@@ -12,7 +12,7 @@ To Compile and Run the program you need to install and configure all necessary l
 * Here there is CUDA-TOOLKIT: [link to download](https://developer.nvidia.com/cuda-downloads)
 * Note: If you have a propertie drivers, i reccomend to use bumblebee ([Debian](https://wiki.debian.org/it/Bumblebee) / [Ubuntu](https://wiki.ubuntu.com/Bumblebee)) instead of nouveau Nvidia driver.
 * The [DevIL](http://openil.sourceforge.net/) library to load the image: [donwload](http://openil.sourceforge.net/download.php)
-* The OpenCL library ([NVIDIA](https://developer.nvidia.com/opencl)/[AMD](http://developer.amd.com/tools-and-sdks/opencl-zone/)) library 
+* The OpenCL library ([NVIDIA](https://developer.nvidia.com/opencl) / [AMD](http://developer.amd.com/tools-and-sdks/opencl-zone/)) library 
 * To run the compiled program, i use optirun, it will install automatically with the bumblebee installation.
 
 ## The Program
