@@ -371,5 +371,5 @@ int main(){
   clReleaseContext(context);
 
   return 0;
-}
+
 }
