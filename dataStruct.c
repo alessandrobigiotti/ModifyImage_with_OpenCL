@@ -6,22 +6,22 @@ int e = 0;
 // The path to the image
 char image[1082];
 
-// The path to the result
+// The path to the results
 char result[1082];
 char result2[1082];
 char result3[1082];
 char result4[1082];
 
-// Path to current directory
+// Path to the current directory
 char currentDirectory[1082];
 
 // Mantaine the pixels of the image
 ILubyte* data_raw;
 
-// The dimensions of image in pixels
+// The image dimensions in pixels
 unsigned int S;
 
-// Pointer to file
+// Pointer to a file
 FILE *fp;
 
 // A buffer to save the .cl source code
@@ -37,7 +37,7 @@ int type_kernel;
 // Selected filter_kernel
 int filter_selected;
 
-// Some possible Mask to
+// Some possible Masks:
 float smooth_mask[49] = { 1, 1, 1, 1, 1, 1, 1,
                           1, 1, 1, 1, 1, 1, 1,
                           1, 1, 1, 1, 1, 1, 1,
@@ -74,7 +74,7 @@ float prewitt_mask_Est[9] = {  -1, 0, 1,
                                -1, 0, 1,
                                -1, 0, 1 };
 
-// A range to applicate some filter
+// A range to apply some filters
 // 3 -> a 7x7 Mask
 // 2 -> a 5x5 Mask
 // 1 -> a 3x3 Mask
