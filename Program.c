@@ -53,10 +53,10 @@ int main(){
   // Create Path to output image
   strcat(strcpy(result, currentDirectory), "/Image/output.bmp");
 
-  //Inizializza DevIL
+  //Inizialize DevIL
   ilInit();
 
-  // Load the image specified by image
+  // Load the image specified by image variable
   ilLoadImage(image);
 
   // Create a Pointer to the image
@@ -65,9 +65,9 @@ int main(){
   // Retrieve the WIDTH and the HEIGHT of the image
   ILuint W = ilGetInteger(IL_IMAGE_WIDTH);
   ILuint H = ilGetInteger(IL_IMAGE_HEIGHT);
-  printf ("Dimensioni Immagine: %d, %d \n", W, H);
+  printf ("Image dimensions: %d, %d \n", W, H);
 
-  // Buffer to copy the pixels
+  // Create a buffer to copy the pixels
   data_raw = (ILubyte*)malloc(sizeof(ILubyte)*H*W * 3);
 
   // Calculate the image Dimensions in pixels
@@ -102,38 +102,30 @@ int main(){
   CreateKernel();
 
   // Copy all necessary data into GPU
-  dev_image = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR,
-	sizeof(float)*S, data, &err);
+  dev_image = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR,	sizeof(float)*S, data, &err);
   out_put = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(float)*S, NULL, &err);
   out_put2 = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(float)*S, NULL, &err);
   out_put3 = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(float)*S, NULL, &err);
   out_put4 = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(float)*S, NULL, &err);
 
-  smooth = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR,
-	sizeof(float) * 49, smooth_mask, &err);
-  smooth2 = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR,
-	sizeof(float) * 25, smooth_mask2, &err);
-  mask_gaus = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR,
-	sizeof(float) * 9, gauss_mask, &err);
-  mask_gaus2 = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR,
-	sizeof(float) * 25, gauss_mask2, &err);
-  prewN = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR,
-	sizeof(float) * 9, prewitt_mask_Nord, &err);
-  prewE = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR,
-	sizeof(float) * 9, prewitt_mask_Est, &err);
-  sharp = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR,
-	sizeof(float) * 9, sharpening, &err);
+  smooth = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, sizeof(float) * 49, smooth_mask, &err);
+  smooth2 = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, sizeof(float) * 25, smooth_mask2, &err);
+  mask_gaus = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, sizeof(float) * 9, gauss_mask, &err);
+  mask_gaus2 = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, sizeof(float) * 25, gauss_mask2, &err);
+  prewN = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, sizeof(float) * 9, prewitt_mask_Nord, &err);
+  prewE = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, sizeof(float) * 9, prewitt_mask_Est, &err);
+  sharp = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, sizeof(float) * 9, sharpening, &err);
   if (err < 0){
 	printf("Impossible copy the data on GPU!\n");
 	return EXIT_FAILURE;
   }
 
   ///////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-  //Dimensione WorkGroup per operazioni puntuali
+  //Set the WorkGroup dimensions for punctual operations
   size_t globalWorkSize3D[3] = {W,H,3};
   //defauls localWorkSize3D { 1, 1, 1 }
 
-  //Dimensione WorkGroup per operazioni locali
+  //Set the WorkGroup dimensions for local operations
   size_t globalWorkSize2D[2] = { W * 3, H };
   //default localWorkSize2D { 1, 1 }
 
@@ -141,7 +133,7 @@ int main(){
   //                    RUN THE KERNEL
   ///////////////////////////////////////////////////////////////////////////
 
-  // Ask how many filter Users
+  // Ask how many filter to use
   printf(" Single mask or Combined mask? \n ");
   printf(" 1 : single,\n  2 : combined \n");
   scanf("%d", &type_kernel);
@@ -332,21 +324,21 @@ int main(){
   // Finish the commands execution
   clFinish(commands);
 
-  //Conversione del risultato (float) in byte
+  //Result convertions from float to byte
   for (int i = 0; i < S; i += 3){
 	out_result[i + 0] = (ILubyte)(output[i + 0] * 255.0f);
 	out_result[i + 1] = (ILubyte)(output[i + 1] * 255.0f);
 	out_result[i + 2] = (ILubyte)(output[i + 2] * 255.0f);
   }
 
-  //Copio il risultato in un'immagine specificata da result#
+  //Compy the result specified from result#
   ilTexImage(W, H, 1, 3, IL_RGB, IL_UNSIGNED_BYTE, out_result);
   ilEnable(IL_FILE_OVERWRITE);
   ilSave(IL_BMP, result);
 
   printf("Changes Completed! \n");
 
-  //libero le risorse
+  //free resources
   clReleaseMemObject(dev_image);
   clReleaseMemObject(out_put);
   clReleaseMemObject(out_put2);
