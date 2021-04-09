@@ -12,14 +12,14 @@ int InitializeOpenCL() {
   // Select NVIDIA PLATFORM
   err = clGetPlatformIDs(10, Platform_id, &Num_Platform);
   if (err != CL_SUCCESS){
-    printf("Errore, Impossibile ottenere una Piattaforma!\n");
+    printf("Error, cannot get a platform!\n");
     return EXIT_FAILURE;
   }
 
   // Select the NVIDIA Device for NVIDIA (Platform_id[1]) 
   err = clGetDeviceIDs(Platform_id[1], CL_DEVICE_TYPE_GPU, 10, Devices_id, &Num_Device);
   if (err != CL_SUCCESS){
-    printf("Errore, Impossibile ottenere un Device!\n");
+    printf("Error, cannot get an available GPU device!\n");
     return EXIT_FAILURE;
   }
 
@@ -27,7 +27,7 @@ int InitializeOpenCL() {
   context = clCreateContext(0, 1, Devices_id, NULL, NULL, &err);
   if (!context)
   {
-    printf("Errore, Impossibile creare un contesto!\n");
+    printf("Error, cannot create the CL context!\n");
     return EXIT_FAILURE;
   }
 
@@ -35,14 +35,14 @@ int InitializeOpenCL() {
   commands = clCreateCommandQueue(context, Devices_id[0], 0, &err);
   if (!commands)
   {
-    printf("Errore, Impossibile creare coda di comando!\n");
+    printf("Error, cannot create the command queue! \n");
     return EXIT_FAILURE;
   }
 
   // Load the .cl file
   fp = fopen(path_to_kernel, "r");
   if (!fp) {
-	printf("Impossibile aprire il file kernel \n");
+	printf("Error, cannot open the kernel file \n");
 	return EXIT_FAILURE;
   }
   // Copy the .cl code into source_str
@@ -54,7 +54,7 @@ int InitializeOpenCL() {
   program = clCreateProgramWithSource(context, 1, (const char **)& source_str, (const size_t *)&source_size, &err);
   if (!program)
   {
-	printf("Errore, Impossibile creare il programma!\n");
+	printf("Error, cannot load the program! \n");
 	scanf("%d", e);
 	return EXIT_FAILURE;
   }
@@ -64,7 +64,7 @@ int InitializeOpenCL() {
   if (err != CL_SUCCESS)	{
 	size_t len;
 	char buffer[2048];
-	printf("Errore, Impossibile creare l'eseguibile!\n");
+	printf("Error, cannot load the executable! \n");
 	// Show some information about the building of the program
 	clGetProgramBuildInfo(program, Devices_id[0], CL_PROGRAM_BUILD_LOG, sizeof(buffer), buffer, &len);
 	printf("%s\n", buffer);
