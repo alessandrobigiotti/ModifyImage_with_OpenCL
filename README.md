@@ -10,7 +10,7 @@ will be processed on the GPU using OpenCL library.
 3. Select the filters for the appropriate modification
 4. Save the output in the folder _/Image_
 
-## Requests
+## Requirements
 To Compile and Run the program you need to install and configure all necessary libraries:
 * The gcc compiler, generally it is installed by default; if you haven't it, open the terminal and type the command (Debian/Ubuntu):
   * $_sudo apt-get install gcc_
